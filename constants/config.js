@@ -1,0 +1,1 @@
+export const baseURL = 'http://sogdianahotel.uz:2118/storage/'

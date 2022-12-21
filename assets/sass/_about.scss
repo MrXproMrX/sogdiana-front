@@ -1,0 +1,118 @@
+// about start
+
+.about{
+    width: 100%;
+    height: auto;
+    background-repeat:no-repeat;
+    background-position: top center;
+    background-size:cover;
+    padding: 80px 0;
+    margin-bottom: 60px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.3);
+        z-index: 0;
+    }
+
+    &__cart{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        position: relative;
+        z-index: 10;
+    }
+
+    &__menu{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        grid-gap: 20px;
+        margin-top: 30px;
+        li{
+            position: relative;
+        }
+
+        li:not(:last-child):after {
+            content: "/";
+            margin-left: 20px;
+            color: #fff;
+        }
+    }
+
+    &__menu__link{
+        @include fontAll(18px,400,#fff);
+    }
+
+    .services__title__h2{
+        color:#fff;
+    }
+}
+
+// about end
+
+
+// about contint start
+
+.about_contint{
+    position: relative;
+    margin-bottom: 60px;
+    &__text{
+        @include fontAll(18px,400,$text);
+        line-height: 150%;
+        text-align: justify;
+        p{
+            margin-bottom: 10px;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            font-size: 110%;
+            font-weight: 600;
+        }
+
+        a{
+            color:#a2c2e6;
+            font-size: 110%;
+            font-weight: 400;
+        }
+    }
+}
+
+// about contint end
+
+
+@media (max-width:1150px){
+    .about_contint__text,
+    .about__menu__link{
+        font-size: 16px;
+    }
+
+    .about{
+        padding: 40px 0;
+    }
+
+    .about__menu{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width:650px){
+    .about_contint__text,
+    .about__menu__link{
+        font-size: 14px;
+    }
+
+    .about{
+        padding: 30px 0;
+    }
+
+    .about__menu{
+        margin-top: 10px;
+    }
+}
