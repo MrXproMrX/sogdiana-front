@@ -20,7 +20,7 @@
 
         <!-- Our services start -->
 
-        <div class="our_services">
+        <div class="our_services" v-if="services">
             <section class="container">
                 <div class="our_services__cart">
                     <h2 class="services__title__h2">{{ $t('ourService') }}</h2>
@@ -50,8 +50,6 @@
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
 export default {
-  name: 'services in',
-
   data(){
     return{
       baseURL,

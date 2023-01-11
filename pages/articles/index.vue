@@ -58,7 +58,6 @@
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
 export default {
-  name: 'services in',
 
   data(){
     return{

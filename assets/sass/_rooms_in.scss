@@ -29,6 +29,52 @@
             margin-top: 30px;
         }
     }
+
+    &__title__h3{
+      @include fontAll(18px,400,$oring);
+      margin-bottom: 20px;
+      margin-top: 20px;
+      line-height: 135%;
+      display: flex;
+      align-items:flex-start;
+      grid-gap: 5px;
+    }
+
+    &__text{
+      @include fontAll(18px,400,$text);
+        line-height: 150%;
+        text-align: justify;
+        p{
+            margin-bottom: 10px;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            font-size: 110%;
+            font-weight: 600;
+        }
+
+        a{
+            color:#a2c2e6;
+            font-size: 110%;
+            font-weight: 400;
+        }
+    }
+
+    &__price_title{
+      @include fontAll(18px,400,$text);
+      line-height: 125%;
+      margin-bottom: 35px;
+      span{
+          color:#e9af25;
+          font-size: 36px;
+          padding-left: 5px;
+          font-weight: 500;
+      }
+    }
+
+    &__price__list{
+      margin-top: 20px;
+    }
 }
 
 // rooms start end
@@ -38,13 +84,35 @@
 .rooms_in_contint{
     position: relative;
     margin-bottom: 60px;
+
+    &__list{
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      align-items:start;
+    }
+
+    &__img{
+      @include fiximg(100%,auto,false);
+      img{
+        max-height: 400px;
+        object-position: center top;
+      }
+    }
 }
 
 // rooms_in_contint end
 
+@media (max-width:1150px){
+  .rooms_in__text{
+    font-size: 16px;
+  }
+}
 
 @media (max-width:750px){
-    .rooms_in__item{
+    .rooms_in__item,
+    .rooms_in_contint__list{
         grid-template-columns: auto;
     }
 
@@ -55,5 +123,9 @@
 
     .rooms_in__img img{
         max-height: 300px;
+    }
+
+    .rooms_in__text{
+      font-size: 14px;
     }
 }

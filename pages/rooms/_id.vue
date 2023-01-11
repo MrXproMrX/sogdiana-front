@@ -18,7 +18,6 @@
 
         <!-- about end -->
 
-
         <!-- rooms start -->
 
         <div class="rooms_in_contint">
@@ -42,6 +41,109 @@
                             </VueSlickCarousel>
                         </section> -->
 
+                        <div class="rooms_in_contint__img">
+                            <img :src="baseURL + RoomsContint.image" :alt="RoomsContint.title">
+                        </div>
+
+                       <section>
+                        <ul class="rooms__menu__icons">
+                          <li>
+                            <h3 class="rooms__title__h3">
+                              <span>
+                                <svg
+                                id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                x="0px"
+                                y="0px"
+                                viewBox="0 121.7 422.4 352"
+                                xml:space="preserve"
+                                >
+                                <path d="M0,227.2h35.2v-70.4h70.4v-35.2H0V227.2z M35.2,368H0v105.6h105.6v-35.2H35.2V368z M316.8,121.7v35.2h70.4	v70.4h35.2V121.7H316.8z M387.2,438.4h-70.4v35.2h105.6V368h-35.2V438.4z"
+                                />
+                              </svg>
+                            </span>
+                            {{RoomsContint.square}}
+                          </h3>
+                        </li>
+
+                        <li>
+                          <h3 class="rooms__title__h3">
+                            <span>
+                              <BathIcon/>
+                            </span>
+                            {{ $t('bath') }}
+                          </h3>
+                        </li>
+
+                        <li>
+                          <h3 class="rooms__title__h3">
+                            <span>
+                          <ACIcon />
+                        </span>
+                        {{ $t('conditioner') }}
+                      </h3>
+                    </li>
+
+                    <li>
+                      <h3 class="rooms__title__h3">
+                        <span>
+                          <TVIcon/>
+                        </span>
+                        {{ $t('tv') }}
+                      </h3>
+                    </li>
+
+                    <li>
+                      <h3 class="rooms__title__h3">
+                        <span>
+                          <WifiIcon/>
+                        </span>
+                        {{ $t('wifi') }}
+                      </h3>
+                    </li>
+
+                    <li>
+                      <h3 class="rooms__title__h3">
+                        <span>
+                          <ParkingIcon/>
+                        </span>
+                        {{ $t('parking') }}
+                      </h3>
+                    </li>
+
+                    <li>
+                      <h3 class="rooms__title__h3">
+                        <span>
+                          <SwimmingIcon/>
+                        </span>
+                        {{ $t('swimming') }}
+                      </h3>
+                    </li>
+
+                    <li>
+                      <h3 class="rooms__title__h3">
+                        <span>
+                          <SwimmingIcon/>
+                        </span>
+                        {{ $t('family') }}
+                      </h3>
+                    </li>
+                        </ul>
+
+                        <h3 class="rooms_in__title__h3">
+                          {{ $t('manHolds') }}
+                          <span>
+                            <i class="fa-solid fa-user"></i>
+                          </span>
+                        </h3>
+
+                        <div class="rooms_in__text" v-html="RoomsContint.content"></div>
+                       </section>
+
+                    </div>
+
+                    <div class="rooms_in__price__list">
+                      <h3 class="rooms__title__h4">{{ $t('price') }}:<span>{{RoomsContint.price}}</span></h3>
                     </div>
                 </div>
             </section>
@@ -61,7 +163,43 @@
 <script>
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
+
+import BathIcon from '@/components/icons/BathIcon';
+import ACIcon from '@/components/icons/ACIcon';
+import TVIcon from '@/components/icons/TVIcon';
+import WifiIcon from '@/components/icons/WifiIcon';
+import ParkingIcon from '@/components/icons/ParkingIcon';
+import SwimmingIcon from '@/components/icons/SwimmingIcon';
+import FamilyIcon from '@/components/icons/FamilyIcon';
 export default {
+
+  components:{
+    BathIcon,
+    ACIcon,
+    TVIcon,
+    WifiIcon,
+    ParkingIcon,
+    SwimmingIcon,
+    FamilyIcon,
+  },
+
+  head(){
+    return{
+      title:this.RoomsContint.title,
+      meta:[
+        {
+          hid: 'max_mrx',
+          name:'max_mrx',
+          content: this.RoomsContint.meta_description,
+        },
+        {
+          hid: 'maris',
+          name:'maris',
+          content:'movies, strem, stremaing',
+        },
+      ]
+    }
+  },
 
     data(){
         return{
@@ -126,7 +264,6 @@ export default {
         await store.dispatch('options/fetchOptions')
         await store.dispatch('rooms/fetchRooms')
     },
-
 
     computed:{
 

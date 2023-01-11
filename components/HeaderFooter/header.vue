@@ -68,7 +68,6 @@ export default {
   computed:{
     availableLocales(){
       this.localeTitle = this.$i18n.loadedLanguages[0]
-      console.log(this.$i18n.loadedLanguages)
       return this.$i18n.locales
     }
   },

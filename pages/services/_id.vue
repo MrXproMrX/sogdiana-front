@@ -20,7 +20,7 @@
 
         <!-- Our services in start -->
 
-        <div class="our_services_in">
+        <div class="our_services_in" v-if="ServicesContint">
             <section class="container">
                 <div class="our_services_in__cart">
 
@@ -57,7 +57,6 @@
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
 export default {
-  name: 'services in',
 
   head(){
         return{

@@ -30,7 +30,7 @@
 
                     <div class="our_services_in__list clearfix">
                         <h2 class="our_services_in__title">{{ArticlesContint.title}}</h2><br>
-                        <div class="about_contint__text" v-html="ArticlesContint.content"></div>
+                        <div class="about_contint__text"  v-html="ArticlesContint.content"></div>
                     </div>
                 </div>
             </section>
@@ -51,6 +51,24 @@
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
 export default {
+
+  head(){
+    return{
+      title:this.ArticlesContint.title,
+      meta:[
+        {
+          hid: 'max_mrx',
+          name:'max_mrx',
+          content: this.ArticlesContint.content,
+        },
+        {
+          hid: 'maris',
+          name:'maris',
+          content:'movies, strem, stremaing',
+        },
+      ]
+    }
+  },
 
     data(){
         return{
