@@ -79,6 +79,193 @@
 
 // rooms start end
 
+
+// SwitchTpLink start
+
+.SwitchTpLink{
+  position: relative;
+  margin-bottom: 100px;
+
+  &__mrx2{
+     width: 550px;
+     height: auto;
+     margin-left: -10px;
+     .slick-arrow{
+       font-size: 0;
+       width: 0;
+       height: 0;
+    }
+
+  .slick-prev{
+      span{
+          display: none;
+      }
+      width: 50px;
+      background: #FFFFFF;
+      box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.14);
+      border-radius: 60px;
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      z-index: 10;
+      left: -15px;
+      border-radius: 50px;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      -ms-border-radius: 50px;
+      -o-border-radius: 50px;
+      @extend%transition;
+      transform:translate(0,-50%);
+      -webkit-transform:translate(0,-50%);
+      -moz-transform:translate(0,-50%);
+      -ms-transform:translate(0,-50%);
+      -o-transform:translate(0,-50%);
+      &::after{
+          content:'';
+          display: inline-block;
+          position: absolute;
+          @extend%transition;
+          top: 50%;
+          left: 50%;
+          width: 10px;
+          height: 18px;
+          background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' viewBox='0 0 13 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.3'%3E%3Cpath d='M12 21L1.95816 11L12 1' stroke='%23434242' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E");
+          background-repeat:no-repeat;
+          background-size:contain;
+          transform: translate(-50%,-50%);
+          -webkit-transform: translate(-50%,-50%);
+          -moz-transform: translate(-50%,-50%);
+          -ms-transform: translate(-50%,-50%);
+          -o-transform: translate(-50%,-50%);
+      }
+
+      &:hover{
+          &::after{
+              background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' viewBox='0 0 13 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 1L1.9582 11L12 21' stroke='%23EF7F1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+          }
+      }
+  }
+
+  .slick-next{
+    span{
+        display: none;
+    }
+    width: 50px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.14);
+    border-radius: 60px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    right: -15px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    @extend%transition;
+    transform:translate(0,-50%);
+    -webkit-transform:translate(0,-50%);
+    -moz-transform:translate(0,-50%);
+    -ms-transform:translate(0,-50%);
+    -o-transform:translate(0,-50%);
+    &::after{
+        content:'';
+        position: absolute;
+        @extend%transition;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 18px;
+        background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' viewBox='0 0 13 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.3'%3E%3Cpath d='M0.999176 1L11.041 11L0.999176 21' stroke='%23434242' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat:no-repeat;
+        background-size:contain;
+        transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+    }
+
+    &:hover{
+        &::after{
+            background-image: url("data:image/svg+xml,%3Csvg width='13' height='22' viewBox='0 0 13 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 21L11.0418 11L1 1' stroke='%23EF7F1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        }
+    }
+  }
+  }
+
+  &__mrx1{
+      width: 540px;
+      height: auto;
+      position: relative;
+      .slick-arrow{
+          width: 0;
+          height: 0;
+          font-size: 0;
+     }
+  }
+
+  &__item2{
+      width: 170px !important;
+      height: 130px;
+      margin-top: 10px;
+      position: relative;
+      cursor: pointer;
+
+      img{
+        margin: 0 10px;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04));
+      }
+  }
+
+
+  &__item{
+      width: 100% !important;
+      height: 100% !important;
+      img{
+          width: 100%;
+          height: 100%;
+          object-fit: scale-down;
+      }
+  }
+
+  &__slaeder{
+      float: left;
+  }
+
+
+  &__text{
+      @include fontAll(18px,400,$text);
+      line-height: 30px;
+      padding: 20px 0;
+  }
+
+  &__item__link{
+      @include fontAll(12px,600,$link);
+      background-color:#4F95E5;
+      padding: 18px 20px;
+      line-height: 100%;
+      text-transform: uppercase;
+      border-radius: 40px;
+      -webkit-border-radius: 40px;
+      -moz-border-radius: 40px;
+      -ms-border-radius: 40px;
+      -o-border-radius: 40px;
+      display: inline-block;
+      margin-top: 30px;
+  }
+}
+
+// SwitchTpLink end
+
+
 // rooms_in_contint start
 
 .rooms_in_contint{
@@ -86,11 +273,12 @@
     margin-bottom: 60px;
 
     &__list{
-      margin-top: 20px;
+      margin-top: 30px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 20px;
+      grid-gap: 30px;
       align-items:start;
+      margin-bottom: 60px;
     }
 
     &__img{
@@ -104,9 +292,33 @@
 
 // rooms_in_contint end
 
+
 @media (max-width:1150px){
   .rooms_in__text{
     font-size: 16px;
+  }
+}
+
+@media (max-width:1050px){
+  .rooms_in_contint__list{
+    grid-template-columns: 1fr;
+    margin-bottom: 30px;
+  }
+
+  .SwitchTpLink__slaeder{
+    float: inherit;
+    max-width: 800px;
+  }
+
+  .SwitchTpLink__mrx1,
+  .SwitchTpLink__mrx2{
+    width: auto;
+  }
+}
+
+@media (max-width:920px){
+  .SwitchTpLink__slaeder{
+    max-width: 600px;
   }
 }
 
@@ -128,4 +340,25 @@
     .rooms_in__text{
       font-size: 14px;
     }
+
+    .SwitchTpLink__slaeder{
+      max-width: 500px;
+    }
+}
+
+@media (max-width:560px){
+  .SwitchTpLink__slaeder{
+    max-width: 400px;
+  }
+
+  .SwitchTpLink__item2{
+    width: 140px !important;
+    height: 100px;
+  }
+}
+
+@media (max-width:460px){
+  .SwitchTpLink__slaeder{
+    max-width: 300px;
+  }
 }

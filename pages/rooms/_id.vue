@@ -27,23 +27,19 @@
 
                     <div class="rooms_in_contint__list">
 
-                        <!-- <section class="rooms_in_contint__slaeder">
-                            <VueSlickCarousel class="rooms_in_contint__mrx1" :fade="true"  ref="c1" :asNavFor="c2" :focusOnSelect="true">
-                                <div class="SwitchTpLink__item" v-for="(SwitchTpLink,index) in SwitchTpLinks.image" :key="index">
-                                    <img :src="SwitchTpLink.img" :alt="index">
+                      <section class="SwitchTpLink__slaeder">
+                            <VueSlickCarousel class="SwitchTpLink__mrx1" :fade="true"  ref="c1" :asNavFor="c2" :focusOnSelect="true">
+                                <div class="SwitchTpLink__item" v-for="(SwitchTpLink,index) in galleryFoto" :key="index">
+                                    <img :src="baseURL + SwitchTpLink" :alt="SwitchTpLink">
                                 </div>
                             </VueSlickCarousel>
 
-                            <VueSlickCarousel class="rooms_in_contint__mrx2"  ref="c2" :asNavFor="c1" :focusOnSelect="true" v-bind="settings">
-                                <div class="SwitchTpLink__item2" v-for="(SwitchTpLink,index) in SwitchTpLinks.image" :key="index">
-                                    <img :src="SwitchTpLink.img" :alt="SwitchTpLink.img">
+                            <VueSlickCarousel class="SwitchTpLink__mrx2"  ref="c2" :asNavFor="c1" :focusOnSelect="true" v-bind="settings">
+                                <div class="SwitchTpLink__item2" v-for="(SwitchTpLink,index) in galleryFoto" :key="index">
+                                    <img :src="baseURL + SwitchTpLink" :alt="SwitchTpLink">
                                 </div>
                             </VueSlickCarousel>
-                        </section> -->
-
-                        <div class="rooms_in_contint__img">
-                            <img :src="baseURL + RoomsContint.image" :alt="RoomsContint.title">
-                        </div>
+                        </section>
 
                        <section>
                         <ul class="rooms__menu__icons">
@@ -158,11 +154,15 @@
 .about{
     background-image: url(@/assets/foto/fon.jpeg);
 }
+
 </style>
 
 <script>
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
+
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
 
 import BathIcon from '@/components/icons/BathIcon';
 import ACIcon from '@/components/icons/ACIcon';
@@ -181,6 +181,7 @@ export default {
     ParkingIcon,
     SwimmingIcon,
     FamilyIcon,
+    VueSlickCarousel
   },
 
   head(){
@@ -209,7 +210,7 @@ export default {
             settings: {
                     arrows: true,
                     dots: false,
-                    infinite: true,
+                    infinite: false,
                     speed: 300,
                     slidesToShow: 3,
                     slidesToScroll: 1,
@@ -227,7 +228,7 @@ export default {
                   breakpoint: 940,
                   settings: {
                   slidesToShow: 3,
-                 slidesToScroll: 1
+                  slidesToScroll: 1
                   }
                  },
 
@@ -235,7 +236,7 @@ export default {
                   breakpoint: 500,
                   settings: {
                   slidesToShow: 2,
-                 slidesToScroll: 1
+                  slidesToScroll: 1
                   }
                  },
 
@@ -243,7 +244,7 @@ export default {
                   breakpoint: 280,
                   settings: {
                   slidesToShow: 1,
-                 slidesToScroll: 1
+                  slidesToScroll: 1
                   }
                  },
                ]
@@ -276,8 +277,12 @@ export default {
             return this.rooms.data.find(rooms => rooms.id === + this.$route.params.id);
         },
 
+        galleryFoto(){
+          return JSON.parse(this.RoomsContint.gallery)
+        },
+
         rooms() {
-            return this.$store.getters['rooms/rooms']
+          return this.$store.getters['rooms/rooms']
         },
     }
 }
