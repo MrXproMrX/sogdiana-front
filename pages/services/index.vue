@@ -28,7 +28,7 @@
                         <div class="our_services__item" v-for="service in services.data" :key="service.id">
                             <img :src="baseURL + service.image" :alt="service.title">
                             <h3 class="our_services__title__h3">{{service.title}}</h3>
-                            <nuxt-link :to="'/services/' + service.id" class="our_services__link">{{ $t('more') }}</nuxt-link>
+                            <nuxt-link :to="localePath('/services/' + service.id)" class="our_services__link">{{ $t('more') }}</nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -50,6 +50,12 @@
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
 export default {
+  head(){
+    return{
+      title: 'Our services',
+    }
+  },
+
   data(){
     return{
       baseURL,
@@ -68,7 +74,7 @@ export default {
   computed:{
     services(){
       return this.$store.getters['services/services']
-    },
+    }
   }
 }
 </script>

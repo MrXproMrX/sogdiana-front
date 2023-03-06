@@ -12,9 +12,9 @@
 import headerVue from '~/components/HeaderFooter/header.vue'
 import footerVue from '~/components/HeaderFooter/footer.vue'
 export default {
-   components:{
+  components:{
     headerVue,
     footerVue
-   }
+  }
 }
 </script>

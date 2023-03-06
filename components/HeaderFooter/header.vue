@@ -26,7 +26,7 @@
                             <li>
                               <nuxt-link  active-class="active" class="header__link" :to="localePath('/articles')">{{ $t('news') }}</nuxt-link>
                             </li>
-                          </ul>
+                        </ul>
                         <div @click="burger = !burger" v-bind:class="{ header__burger__overflow: burger }"></div>
                     </section>
 
@@ -56,7 +56,6 @@
 
 <script>
 export default {
-
   data(){
     return{
       burger:false,

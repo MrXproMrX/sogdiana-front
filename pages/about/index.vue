@@ -42,23 +42,17 @@ import { formatDate } from '@/utils';
 export default {
   name: 'about',
   head(){
-        return{
-            title: this.page.data.title,
-            meta:[
-              {
-                  hid: this.page.data.meta_description,
-                  name:this.page.data.meta_title,
-                  content:this.page.data.content,
-                },
-
-                {
-                    hid: this.page.data.meta_description,
-                    name:this.page.data.meta_title,
-                    content:this.page.data.content,
-                },
-            ]
-        }
-    },
+    return{
+      title: this.page.data.title,
+      meta:[
+        {
+          hid: this.page.data.meta_description,
+          name:this.page.data.meta_title,
+          content:this.page.data.content,
+        },
+      ]
+    }
+  },
 
   data(){
     return{

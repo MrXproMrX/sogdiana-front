@@ -17,7 +17,6 @@
 
         <!-- about end -->
 
-
         <!-- articles start -->
 
         <div class="articles">
@@ -34,7 +33,7 @@
                                     <h4 class="news__title__h4">{{formatDate(article.updated_at)}}</h4>
                                     <h2 class="articles__title__h2">{{article.title}}</h2>
                                     <div class="articles__text" v-html="article.content.slice(0,200)"></div>
-                                    <nuxt-link :to="'/articles/' + article.id" class="rooms__button">{{ $t('more') }}</nuxt-link>
+                                    <nuxt-link :to="localePath('/articles/' + article.id)" class="rooms__button">{{ $t('more') }}</nuxt-link>
                                 </section>
                             </div>
                         </div>

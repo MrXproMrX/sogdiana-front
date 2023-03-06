@@ -17,7 +17,6 @@
 
         <!-- about end -->
 
-
         <!-- rooms start -->
 
         <div class="rooms_in">
@@ -37,7 +36,7 @@
                                   {{ $t('price') }}:<span>{{room.price}}</span>
                                 </h4>
                                 <div class="rooms_in__item__cart">
-                                    <nuxt-link :to="'/rooms/' + room.id" class="rooms__button">{{ $t('more') }}</nuxt-link>
+                                    <nuxt-link :to="localePath('/rooms/' + room.id)" class="rooms__button">{{ $t('more') }}</nuxt-link>
                                     <button class="rooms__button">{{ $t('booking') }}</button>
                                 </div>
                             </div>

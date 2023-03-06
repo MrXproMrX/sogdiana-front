@@ -1,5 +1,6 @@
 <template>
   <section>
+
     <!-- slider start-->
 
     <div class="slider">
@@ -24,7 +25,6 @@
     </div>
 
     <!-- slider end-->
-
 
     <!-- rooms start -->
 
@@ -119,7 +119,7 @@
                     <li>
                       <h3 class="rooms__title__h3">
                         <span>
-                          <SwimmingIcon/>
+                          <FamilyIcon/>
                         </span>
                         {{ $t('family') }}
                       </h3>
@@ -208,7 +208,7 @@
 <script>
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
-import loading from '../components/loading.vue';
+import loading from '@/components/loading.vue';
 import {baseURL} from '@/constants/config';
 import { formatDate } from '@/utils';
 import BathIcon from '@/components/icons/BathIcon';
@@ -230,6 +230,12 @@ export default {
     SwimmingIcon,
     FamilyIcon,
     loading
+  },
+
+  head(){
+    return{
+      title: `Гостиница Самарканда: Grand Hotel Sogdiana`,
+    }
   },
 
   data(){
@@ -275,8 +281,6 @@ export default {
     options(){
       return this.$store.getters['options/options']
     },
-
   }
-
 }
 </script>

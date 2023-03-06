@@ -8,7 +8,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Цены гостиницы Самарканда на сайте. Забронируйте прямо сейчас! Лучшие цены. Высокое качество. Сауна, крытый бассейн в Самарканде в нашем отеле.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -25,7 +25,6 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    // SCSS file in the project
     '@/assets/sass/index.scss'
   ],
 
@@ -34,7 +33,7 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
