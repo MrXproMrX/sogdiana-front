@@ -234,7 +234,7 @@ export default {
 
   head(){
     return{
-      title: `Гостиница Самарканда: Grand Hotel Sogdiana`,
+      title: 'Гостиница Самарканда: Grand Hotel Sogdiana',
     }
   },
 
