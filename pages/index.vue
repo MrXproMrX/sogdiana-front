@@ -3,11 +3,11 @@
 
     <!-- slider start-->
 
-    <div class="slider">
-      <template v-if="sliders.length">
+    <div class="slider" v-if="slidersAll.length">
+      <template>
         <div class="slider__cart">
           <VueSlickCarousel v-bind="slic" class="slider__list">
-            <div class="slider__item" v-for="slider in sliders" :key="slider.id">
+            <div class="slider__item" v-for="slider in slidersAll" :key="slider.id">
               <img :src="baseURL + slider.image" :alt="slider.title">
 
               <section class="container">
@@ -28,13 +28,13 @@
 
     <!-- rooms start -->
 
-    <section class="container">
+    <section class="container" v-if="roomsAll.length">
       <div class="rooms">
-        <template v-if="rooms.length">
+        <template>
           <div class="rooms__cart">
             <div class="rooms__list">
 
-              <div class="rooms__item" v-for="room in rooms" :key="room.id">
+              <div class="rooms__item" v-for="room in roomsAll" :key="room.id">
                 <div class="rooms__img">
                   <img :src="baseURL + room.image" :alt="room.title">
                 </div>
@@ -145,13 +145,13 @@
 
     <!-- Services start -->
 
-    <div class="services">
+    <div class="services" v-if="servicesAll.length">
       <section class="container">
         <div class="services__cart">
           <h2 class="services__title__h2">{{ $t('ourService') }}</h2>
           <div class="services__list">
 
-            <div class="services__item" v-for="service in services" :key="service.id">
+            <div class="services__item" v-for="service in servicesAll" :key="service.id">
               <div class="services__img">
                 <img :src="baseURL + service.image" :alt="service.title">
                 <h4 class="services__title__h4">{{service.title}}</h4>
@@ -170,13 +170,13 @@
 
     <!-- News start -->
 
-    <div class="news">
+    <div class="news" v-if="articlesAll.length">
       <section class="container">
         <div class="news__cart">
           <h2 class="services__title__h2">{{ $t('news') }}</h2>
 
           <div class="news__list">
-            <div class="news__item" v-for="article in articles" :key="article.id">
+            <div class="news__item" v-for="article in articlesAll" :key="article.id">
               <div class="news__img">
                 <img :src="baseURL + article.image" alt="news">
               </div>
@@ -193,10 +193,10 @@
 
     <!-- map start -->
 
-    <div class="map">
-      <div class="map__cart" v-if="options.data[4].id">
+    <div class="map" v-if="optionsMap.id">
+      <div class="map__cart" v-if="optionsMap.id">
         <h2 class="services__title__h2">{{ $t('contact') }}</h2>
-        <div class="map__list" v-html="options.data[4].value"></div>
+        <div class="map__list" v-html="optionsMap.value"></div>
       </div>
     </div>
 
@@ -266,21 +266,171 @@ export default {
       return this.$store.getters['homepage/sliders']
     },
 
+    slidersAll(){
+      const listRooms = this.sliders
+      const arry = []
+      for(var i = 0; i < listRooms.length;i++){
+        const itemRooms = listRooms[i]
+        const title = itemRooms.title
+        const description = itemRooms.description
+        const image = itemRooms.image
+        const id = itemRooms.id
+        if(this.$i18n.locale == 'ru'){
+          arry.push({title,description,image,id})
+        }
+
+        if(this.$i18n.locale == 'en' && itemRooms.translations.length){
+          for(var m = 0; m < itemRooms.translations.length;m++){
+            if(itemRooms.translations[m].column_name == 'description'){
+              this.contentEn = itemRooms.translations[m].value
+            }
+
+            if(itemRooms.translations[m].column_name == 'title'){
+              this.titleEn = itemRooms.translations[m].value
+            }
+            }
+            const title = this.titleEn
+            const description = this.contentEn
+            arry.push({title,description,image,id})
+          }
+        }
+        return arry
+    },
+
     rooms() {
       return this.$store.getters['homepage/rooms']
+    },
+
+    roomsAll(){
+      const listRooms = this.rooms
+      const arry = []
+      for(var i = 0; i < listRooms.length;i++){
+        const itemRooms = listRooms[i]
+        const title = itemRooms.title
+        const description = itemRooms.description
+        const image = itemRooms.image
+        const id = itemRooms.id
+        const price = itemRooms.price
+        if(this.$i18n.locale == 'ru'){
+          arry.push({title,description,image,id,price})
+        }
+
+        if(this.$i18n.locale == 'en' && itemRooms.translations.length){
+          for(var m = 0; m < itemRooms.translations.length;m++){
+            if(itemRooms.translations[m].column_name == 'description'){
+              this.contentEn = itemRooms.translations[m].value
+            }
+
+            if(itemRooms.translations[m].column_name == 'title'){
+              this.titleEn = itemRooms.translations[m].value
+            }
+
+            if(itemRooms.translations[m].column_name == 'price'){
+              if(this.priceEn = itemRooms.translations[m].value.length >= 1){
+                this.priceEn = itemRooms.translations[m].value
+              }
+            }
+
+          }
+          const title = this.titleEn
+          const description = this.contentEn
+          const price = this.priceEn
+          arry.push({title,description,image,id,price})
+        }
+      }
+      return arry
     },
 
     services() {
       return this.$store.getters['homepage/services']
     },
 
+    servicesAll(){
+      const listServices = this.services
+      const arry = []
+      for(var i = 0; i < listServices.length;i++){
+        const itemServices = listServices[i]
+        const title = itemServices.title
+        const content = itemServices.content
+        const image = itemServices.image
+        const id = itemServices.id
+        if(this.$i18n.locale == 'ru'){
+          arry.push({title,content,image,id})
+        }
+
+        if(this.$i18n.locale == 'en' && itemServices.translations.length){
+          for(var m = 0; m < itemServices.translations.length;m++){
+            if(itemServices.translations[m].column_name == 'content'){
+              this.contentEn = itemServices.translations[m].value
+            }
+
+            if(itemServices.translations[m].column_name == 'title'){
+              this.titleEn = itemServices.translations[m].value
+            }
+
+          }
+          const title = this.titleEn
+          const content = this.contentEn
+          arry.push({title,content,image,id})
+        }
+      }
+      return arry
+    },
+
     articles() {
       return this.$store.getters['homepage/articles']
+    },
+
+    articlesAll(){
+      const listArticles = this.articles
+      const arry = []
+      for(var i = 0; i < listArticles.length;i++){
+        const itemArticles = listArticles[i]
+        const title = itemArticles.title
+        const content = itemArticles.content
+        const image = itemArticles.image
+        const id = itemArticles.id
+        const updated_at = itemArticles.updated_at
+        if(this.$i18n.locale == 'ru'){
+          arry.push({title,content,image,id,updated_at})
+        }
+
+        if(this.$i18n.locale == 'en' && itemArticles.translations.length){
+          for(var m = 0; m < itemArticles.translations.length;m++){
+            if(itemArticles.translations[m].column_name == 'content'){
+              this.contentEn = itemArticles.translations[m].value
+            }
+
+            if(itemArticles.translations[m].column_name == 'title'){
+              this.titleEn = itemArticles.translations[m].value
+            }
+
+          }
+          const title = this.titleEn
+          const content = this.contentEn
+          arry.push({title,content,image,id,updated_at})
+        }
+      }
+      console.log(this.options)
+      return arry
     },
 
     options(){
       return this.$store.getters['options/options']
     },
+
+    optionsMap(){
+      const map = this.options.data
+      for(var i = 0; i < map.length;i++){
+        if(map[i].display_name == 'MAP'){
+          const arry = {
+            value:map[i].value,
+            id:map[i].id
+          }
+          return arry
+        }
+      }
+    }
   }
 }
 </script>

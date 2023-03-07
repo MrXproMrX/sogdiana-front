@@ -10,7 +10,7 @@ export const mutations = {
 
 export const actions = {
     async fetchPage({commit}){
-        const page = await this.$axios.$get('api/page?id=1&lang=ru')
+        const page = await this.$axios.$get(`api/page?id=1&lang=${this.$i18n.locale}`)
         commit('setpage', page)
     }
 }

@@ -102,7 +102,7 @@ export default {
     },
 
     servicesItem(){
-      if(this.$i18n.locale == 'en'){
+      if(this.$i18n.locale == 'en' && this.ServicesContint.translations.length){
         for(var i = 0; i < this.ServicesContint.translations.length; i++){
           if(this.ServicesContint.translations[i].column_name == 'content'){
             this.servicesContent = this.ServicesContint.translations[i].value

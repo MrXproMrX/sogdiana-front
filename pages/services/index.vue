@@ -20,12 +20,12 @@
 
         <!-- Our services start -->
 
-        <div class="our_services" v-if="services">
+        <div class="our_services" v-if="serviceslocales">
             <section class="container">
                 <div class="our_services__cart">
                     <h2 class="services__title__h2">{{ $t('ourService') }}</h2>
                     <div class="our_services__list">
-                        <div class="our_services__item" v-for="service in services.data" :key="service.id">
+                        <div class="our_services__item" v-for="service in serviceslocales" :key="service.id">
                             <img :src="baseURL + service.image" :alt="service.title">
                             <h3 class="our_services__title__h3">{{service.title}}</h3>
                             <nuxt-link :to="localePath('/services/' + service.id)" class="our_services__link">{{ $t('more') }}</nuxt-link>
@@ -74,6 +74,38 @@ export default {
   computed:{
     services(){
       return this.$store.getters['services/services']
+    },
+
+    serviceslocales(){
+      const listServices = this.services.data
+      const arry = []
+      for(var i = 0; i < listServices.length;i++){
+        const itemServices = listServices[i]
+        const title = itemServices.title
+        const content = itemServices.content
+        const image = itemServices.image
+        const id = itemServices.id
+        if(this.$i18n.locale == 'ru'){
+          arry.push({title,content,image,id})
+        }
+
+        if(this.$i18n.locale == 'en' && itemServices.translations.length){
+          for(var m = 0; m < itemServices.translations.length;m++){
+            if(itemServices.translations[m].column_name == 'content'){
+              this.contentEn = itemServices.translations[m].value
+            }
+
+            if(itemServices.translations[m].column_name == 'title'){
+              this.titleEn = itemServices.translations[m].value
+            }
+
+          }
+          const title = this.titleEn
+          const content = this.contentEn
+          arry.push({title,content,image,id})
+        }
+      }
+      return arry
     }
   }
 }

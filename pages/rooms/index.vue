@@ -22,9 +22,9 @@
         <div class="rooms_in">
             <section class="container">
                 <div class="rooms_in__cart">
-                    <template v-if="rooms.data.length">
+                    <template v-if="roomsAll.length">
                         <div class="rooms_in__list">
-                        <div class="rooms_in__item" v-for="room in rooms.data" :key="room.id">
+                        <div class="rooms_in__item" v-for="room in roomsAll" :key="room.id">
                             <div class="rooms_in__img">
                                 <img :src="baseURL + room.image" :alt="room.title">
                             </div>
@@ -79,9 +79,49 @@ export default {
   },
 
     computed:{
-        rooms() {
-            return this.$store.getters['rooms/rooms']
-        },
+      rooms() {
+        return this.$store.getters['rooms/rooms']
+      },
+
+      roomsAll(){
+        const listRooms = this.rooms.data
+        const arry = []
+        for(var i = 0; i < listRooms.length;i++){
+          const itemRooms = listRooms[i]
+          const title = itemRooms.title
+          const content = itemRooms.content
+          const image = itemRooms.image
+          const id = itemRooms.id
+          const price = itemRooms.price
+          if(this.$i18n.locale == 'ru'){
+            arry.push({title,content,image,id,price})
+          }
+
+          if(this.$i18n.locale == 'en' && itemRooms.translations.length){
+            for(var m = 0; m < itemRooms.translations.length;m++){
+              if(itemRooms.translations[m].column_name == 'content'){
+                this.contentEn = itemRooms.translations[m].value
+              }
+
+              if(itemRooms.translations[m].column_name == 'title'){
+                this.titleEn = itemRooms.translations[m].value
+              }
+
+              if(itemRooms.translations[m].column_name == 'price'){
+                if(this.priceEn = itemRooms.translations[m].value.length >= 1){
+                  this.priceEn = itemRooms.translations[m].value
+                }
+              }
+
+            }
+            const title = this.titleEn
+            const content = this.contentEn
+            const price = this.priceEn
+            arry.push({title,content,image,id,price})
+          }
+        }
+        return arry
+      }
     }
 }
 </script>
