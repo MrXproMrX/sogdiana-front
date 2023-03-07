@@ -11,19 +11,19 @@
 
                     <section v-bind:class="{ header__burger__menu: burger }">
                         <ul class="header__menu">
-                            <li>
+                            <li @click="burger = false">
                               <nuxt-link active-class="active"  class="header__link" :to="localePath('/about')">{{ $t('aboutUs') }}</nuxt-link>
                             </li>
 
-                            <li>
+                            <li @click="burger = false">
                               <nuxt-link active-class="active"  class="header__link" :to="localePath('/services')">{{ $t('service') }}</nuxt-link>
                             </li>
 
-                            <li>
+                            <li @click="burger = false">
                               <nuxt-link active-class="active" class="header__link" :to="localePath('/rooms')">{{ $t('rooms') }}</nuxt-link>
                             </li>
 
-                            <li>
+                            <li @click="burger = false">
                               <nuxt-link  active-class="active" class="header__link" :to="localePath('/articles')">{{ $t('news') }}</nuxt-link>
                             </li>
                         </ul>
