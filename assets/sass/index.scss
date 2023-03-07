@@ -154,7 +154,8 @@ body{
         -moz-transform: translate(-50%,-50%);
         -ms-transform: translate(-50%,-50%);
         -o-transform: translate(-50%,-50%);
-        margin: 0 20px;
+        padding: 0 20px;
+        width:100%;
     }
 
     &__title__h1{
@@ -544,7 +545,7 @@ body{
     }
 
     &__list{
-        padding: 30px;
+        padding: 20px 0px;
         border-top: 1px solid #a2c2e6;
     }
 
@@ -834,6 +835,7 @@ body{
 
     .slider__title__h1 {
         font-size: 30px;
+        padding-bottom: 10px;
     }
 
     .slider__list .slick-next::after,
