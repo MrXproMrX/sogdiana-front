@@ -411,7 +411,6 @@ export default {
           arry.push({title,content,image,id,updated_at})
         }
       }
-      console.log(this.options)
       return arry
     },
 
